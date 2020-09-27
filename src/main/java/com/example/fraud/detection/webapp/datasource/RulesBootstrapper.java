@@ -6,15 +6,23 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 @Component
 public class RulesBootstrapper implements ApplicationRunner {
+
+    private List<Rule> ruleList = new ArrayList<>();
 
     private KafkaRulesPusher kafkaRulesPusher;
 
     public RulesBootstrapper(KafkaRulesPusher kafkaRulesPusher) {
         this.kafkaRulesPusher = kafkaRulesPusher;
+    }
+
+    public void sendToKafka() {
+        ruleList.forEach(rule -> kafkaRulesPusher.accept(rule));
     }
 
     @Override
@@ -60,9 +68,9 @@ public class RulesBootstrapper implements ApplicationRunner {
         rule4.setLimitOperatorType(Rule.LimitOperatorType.GREATER_EQUAL);
         rule4.setWindowMinutes(1440);
 
-        kafkaRulesPusher.accept(rule1);
-        kafkaRulesPusher.accept(rule2);
-        kafkaRulesPusher.accept(rule3);
-        kafkaRulesPusher.accept(rule4);
+        ruleList.add(rule1);
+        //ruleList.add(rule2);
+        //ruleList.add(rule3);
+        //ruleList.add(rule4);
     }
 }

@@ -23,7 +23,7 @@ public class Transaction {
 
     private BigDecimal paymentAmount;
 
-    private PaymentType payMentType;
+    private PaymentType paymentType;
 
     public enum PaymentType  {
 

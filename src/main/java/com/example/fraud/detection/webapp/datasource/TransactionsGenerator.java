@@ -80,7 +80,7 @@ public class TransactionsGenerator implements Runnable {
                 .payeeId(new Long(100))
                 .beneficiaryId(new Long(20000))
                 .paymentAmount(paymentAmount)
-                .payMentType(paymentType(transactionId))
+                .paymentType(paymentType(transactionId))
                 .build();
     }
 
