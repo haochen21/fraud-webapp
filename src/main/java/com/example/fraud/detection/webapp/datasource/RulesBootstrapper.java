@@ -33,9 +33,9 @@ public class RulesBootstrapper implements ApplicationRunner {
         rule1.setGroupingKeyNames(Arrays.asList("payeeId","beneficiaryId"));
         rule1.setAggregateFieldName("paymentAmount");
         rule1.setAggregateFunctionType(Rule.AggregateFunctionType.SUM);
-        rule1.setLimit(new BigDecimal(20000000));
+        rule1.setLimit(new BigDecimal(100));
         rule1.setLimitOperatorType(Rule.LimitOperatorType.GREATER);
-        rule1.setWindowMinutes(43200);
+        rule1.setWindowMinutes(5);
 
         Rule rule2 = new Rule();
         rule2.setRuleId(2);
